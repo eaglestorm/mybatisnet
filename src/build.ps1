@@ -12,7 +12,7 @@ properties {
     $buildDefines = $null
     $currentBuildDefines = $null
     $buildDir = "bin\" + $projectConfig
-    $outDir = ".\build"     1
+    $outDir = ".\build"     
     
     ####################
     #External Programs
@@ -26,9 +26,13 @@ properties {
 
 task default -depends Build 
 
-task Build -depends Test {
-     Copy-Item -Path  ".\MyBatis.Common\**\*.dll" -Destination ".\build\dist"
-    Copy-Item -Path  ".\MyBatis.DataMapper\**\*.dll" -Destination ".\build\dist"
+task Build -depends Compile, Clean {
+     if(!(Test-Path $outDir"\dist"))
+    {
+        md $outDir"\dist"
+    }
+     Copy-Item ".\MyBatis.Common\$buildDir\*.dll" $outDir"\dist"
+    Copy-Item ".\MyBatis.DataMapper\$buildDir\*.dll" $outDir"\dist"
 }
 
 task Test -depends Compile, Clean { 
