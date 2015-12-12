@@ -34,6 +34,9 @@ namespace MyBatis.Common.Logging
 	/// Uses the specified <see cref="ILoggerFactoryAdapter" /> to create <see cref="ILog" /> instances
 	/// that are used to log messages. Inspired by log4net.
 	/// </summary>
+	/// <remarks>
+	/// TODO: replace with log4net
+	/// </remarks>
 	public static class LogManager
 	{
 		private static ILoggerFactoryAdapter _adapter = null;

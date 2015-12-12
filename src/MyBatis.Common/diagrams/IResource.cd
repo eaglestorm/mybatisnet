@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MyBatis.Common.Resources.AbstractResource" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAYACAgAAAEAAAAAAAAAAAIAAAACEAAAAAAAAA=</HashCode>
+      <FileName>Resources\AbstractResource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MyBatis.Common.Resources.AssemblyResource" Collapsed="true">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAgAAAAAAAAAAgAgACIAAEACEAAAAAAAAA=</HashCode>
+      <FileName>Resources\AssemblyResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyBatis.Common.Resources.FileResource" Collapsed="true">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAgAAAAAAAAAAAAQAAIAAAACEAAAABAAAA=</HashCode>
+      <FileName>Resources\FileResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyBatis.Common.Resources.StaticContentResource" Collapsed="true">
+    <Position X="5.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAIAAAgAAAAAAAAAAAAAAAIAAAACEAAAAAAAAA=</HashCode>
+      <FileName>Resources\StaticContentResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyBatis.Common.Resources.UrlResource" Collapsed="true">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAgAAAAAAAAAAAAAAAIAACACEAAAAAAAAA=</HashCode>
+      <FileName>Resources\UrlResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

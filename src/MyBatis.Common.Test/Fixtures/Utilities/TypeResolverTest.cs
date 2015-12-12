@@ -114,7 +114,7 @@ namespace MyBatis.Common.Test.Fixtures.Utilities
 
             Assert.IsNotNull(type);
 
-            Assert.That(gen, Is.InstanceOfType(type));
+            Assert.IsInstanceOf(type,gen);
         }
 
         private class MyGeneric<X, Y, Z, W>

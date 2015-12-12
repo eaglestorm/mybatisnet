@@ -76,8 +76,8 @@ namespace MyBatis.DataMapper.SqlClient.Test.Fixtures.Mapping
             IList list = dataMapper.QueryForList("GetMultipleResultClassAccount", null);
             Assert.AreEqual(2, list.Count);
 
-            Assert.That(list[0], Is.InstanceOfType(typeof(List<Account>)));
-            Assert.That(list[1], Is.InstanceOfType(typeof(List<Account>)));
+            Assert.IsInstanceOf(typeof(List<Account>),list[0]);
+            Assert.IsInstanceOf(typeof(List<Account>),list[1]);
         }
 
         /// <summary>
@@ -118,8 +118,8 @@ namespace MyBatis.DataMapper.SqlClient.Test.Fixtures.Mapping
             IList list = dataMapper.QueryForList("GetMultipleResultClass", null);
             Assert.AreEqual(2, list.Count);
 
-            Assert.That(list[0], Is.InstanceOfType(typeof(List<Account>)));
-            Assert.That(list[1], Is.InstanceOfType(typeof(List<Category>)));
+            Assert.IsInstanceOf(typeof(List<Account>),list[0]);
+            Assert.IsInstanceOf(typeof(List<Category>),list[1]);
 
         }
         

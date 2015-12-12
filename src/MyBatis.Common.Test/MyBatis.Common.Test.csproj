@@ -94,13 +94,12 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External-Bin\Net\2.0\log4net.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.0.5813.39033, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net20\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External-Bin\Net\2.0\nunit.framework.dll</HintPath>
+    <Reference Include="OctopusService">
+      <HintPath>..\External-Bin\test\OctopusService.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -163,10 +162,9 @@
     <Compile Include="Fixtures\Utilities\Timer.cs" />
     <Compile Include="Fixtures\Utilities\TypeResolverTest.cs" />
     <Compile Include="Fixtures\Utilities\TypeUtilsTest.cs" />
-    <None Include="App.config" />
-    <None Include="bin\Debug\SqlMap_MSSQL_SqlClient.config" />
-    <None Include="bin\Debug\test.config" />
-    <Content Include="bin\Debug\OctopusService.dll" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="license.txt" />
     <EmbeddedResource Include="Fixtures\Utilities\sample.txt" />
     <Content Include="Scripts\Access\account-init.sql" />
@@ -221,17 +219,28 @@
     <Content Include="Scripts\Oracle\other-init.sql" />
     <Content Include="Scripts\Oracle\swap-procedure.sql" />
     <Content Include="Scripts\Oracle\user-init.sql" />
+    <None Include="packages.config" />
+    <None Include="SqlMap_MSSQL_SqlClient.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="test.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyBatis.Common\MyBatis.Common.csproj">
       <Project>{BBC8DA4A-EA88-41D9-8B93-929B8F3ADADE}</Project>
-      <Name>Apache.Ibatis.Common</Name>
+      <Name>MyBatis.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="properties.xml" />
+    <EmbeddedResource Include="properties.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>

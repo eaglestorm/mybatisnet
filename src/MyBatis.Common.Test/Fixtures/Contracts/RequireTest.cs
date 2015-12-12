@@ -4,6 +4,7 @@ using MyBatis.Common.Contracts.Exceptions;
 using MyBatis.Common.Test.Domain;
 using NUnit.Framework;
 using Is = MyBatis.Common.Contracts.Constraints.Is;
+using Assert = NUnit.Framework.Assert;
 
 namespace MyBatis.Common.Test.Fixtures.Contracts
 {
@@ -17,10 +18,9 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Boolean object should be equal to 'True' when checking condition")]
         public void Boolean_condition_should_raise_exception_on_when_false()
         {
-            Contract.Require.That(1 == 2).When("checking condition");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(1 == 2).When("checking condition"); });
         }
 
         [Test]
@@ -54,10 +54,9 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "String object should be equal to null when checking string value")]
         public void Should_raise_exception_when_constraint_null_not_verified()
         {
-            Contract.Require.That("toto", Is.Null).When("checking string value");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That("toto", Is.Null).When("checking string value"); });
         }
 
         [Test]
@@ -73,17 +72,15 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "String object should be empty when checking empty string")]
         public void Should_raise_exception_when_constraint_empty_not_verified()
         {
-            Contract.Require.That("toto", Is.Empty).When("checking empty string");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That("toto", Is.Empty).When("checking empty string"); });
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Boolean object should be equal to 'False' when checking boolean value")]
         public void Should_raise_exception_when_constraint_not_verified()
         {
-            Contract.Require.That(true, Is.False).When("checking boolean value");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(true, Is.False).When("checking boolean value"); });
         }
 
         [Test]
@@ -93,10 +90,9 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Int32 object should be equal to '2' when checking 3 value")]
         public void Should_raise_exception_when_not_equal_to()
         {
-            Contract.Require.That(3, Is.EqualTo(2)).When("checking 3 value");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(3, Is.EqualTo(2)).When("checking 3 value"); });
         }
 
         [Test]
@@ -107,10 +103,9 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "String object should be equal to 'titi' when checking string")]
         public void Should_raise_exception_when_and_constraints_not_verified()
         {
-            Contract.Require.That("toto", Is.EqualTo("titi") & Is.Empty).When("checking string");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That("toto", Is.EqualTo("titi") & Is.Empty).When("checking string"); });
         }
 
         [Test]
@@ -119,11 +114,10 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
             Contract.Require.That(string.Empty, Is.Null | Is.Empty).When("checking or constraint");
         }
 
-        [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "String object should be empty when checking string value")]
+        [Test]        
         public void Should_raise_exception_when_or_constraints_not_verified()
         {
-            Contract.Require.That("toto", Is.Null | Is.Empty).When("checking string value");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That("toto", Is.Null | Is.Empty).When("checking string value"); });
         }
 
         [Test]
@@ -157,10 +151,9 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Int32 object should be of type String when checking 25")]
         public void Should_raise_exception_when_typeof_not_verified()
         {
-            Contract.Require.That(25, Is.TypeOf<string>()).When("checking 25");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(25, Is.TypeOf<string>()).When("checking 25"); });
         }
 
         [Test]
@@ -176,10 +169,9 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Int32 object should be assignable from String when checking assignable")]
         public void Should_raise_exception_when_assignable_not_verified()
         {
-            Contract.Require.That(55, Is.AssignableFrom<string>()).When("checking assignable");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(55, Is.AssignableFrom<string>()).When("checking assignable"); });
         }
 
         [Test]
@@ -191,15 +183,14 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
             Contract.Require.That(address2, Is.SameAs(address1)).When("checking same");
         }
 
-        [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Address object should be same as Apache.Ibatis.Common.Test.Domain.Address when checking same")]
+        [Test]        
         public void Should_raise_exception_when_sameas_not_verified()
         {
             Address address1 = new Address();
-            Address address2 = new Address(); ;
+            Address address2 = new Address();
 
             Contract.Require.That(address2, Is.Not.SameAs(address1)).When("checking not same");
-            Contract.Require.That(address2, Is.SameAs(address1)).When("checking same");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(address2, Is.SameAs(address1)).When("checking same"); });
         }
 
         [Test]
@@ -215,10 +206,9 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
         }
 
         [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Object reference should not be equal to null when retrieving argument IResource")]
         public void Should_be_not_null()
         {
-            Contract.Require.That(null, Is.Not.Null).When("retrieving argument IResource");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(null, Is.Not.Null).When("retrieving argument IResource"); });
         }
 
         [Test]
@@ -233,11 +223,10 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
             Contract.Require.That(5, Is.GreaterThan(3)).When("checking GreaterThan");
         }
 
-        [Test]
-        [ExpectedException(typeof(PreConditionException), ExpectedMessage = "Int32 object should greater than '10' when checking GreaterThan")]
+        [Test]        
         public void Should_be_GreaterThan_10()
         {
-            Contract.Require.That(5, Is.GreaterThan(10)).When("checking GreaterThan");
+            Assert.Throws<PreConditionException>(delegate { Contract.Require.That(5, Is.GreaterThan(10)).When("checking GreaterThan"); });
         }
 
         [Test]

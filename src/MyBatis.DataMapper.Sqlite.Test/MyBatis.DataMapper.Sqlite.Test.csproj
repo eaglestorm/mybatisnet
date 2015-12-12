@@ -55,9 +55,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\External-Bin\Net\2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External-Bin\Net\2.0\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.0.5813.39033, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net20\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NVelocity">
       <HintPath>..\External-Bin\Net\2.0\NVelocity.dll</HintPath>
@@ -199,16 +199,18 @@
     <EmbeddedResource Include="providers.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Scripts\account-init.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyBatis.Common\MyBatis.Common.csproj">
       <Project>{BBC8DA4A-EA88-41D9-8B93-929B8F3ADADE}</Project>
-      <Name>Apache.Ibatis.Common</Name>
+      <Name>MyBatis.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyBatis.DataMapper\MyBatis.DataMapper.csproj">
       <Project>{F3E45F39-3224-4EAD-B138-EB5CC0E32824}</Project>
-      <Name>Apache.Ibatis.DataMapper</Name>
+      <Name>MyBatis.DataMapper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

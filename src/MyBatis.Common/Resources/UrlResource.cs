@@ -100,6 +100,7 @@ namespace MyBatis.Common.Resources
         /// If the resource is not available on a filesystem, or cannot be
         /// exposed as a <see cref="System.IO.FileInfo"/> handle.
         /// </exception>
+        /// TODO: Bad Design Refactory
         public override FileInfo FileInfo
         {
             get

@@ -37,6 +37,10 @@ namespace MyBatis.Common.Resources
     /// An <see cref="IResource"/> implementation for
     /// resources stored within assemblies.
     /// </summary>
+    /// <remarks>
+    /// TODO: There is no such scheme as assembly!
+    /// TODO: not SOLID
+    /// </remarks>
     public class AssemblyResource : AbstractResource
     {
         private readonly Uri uri = null;
@@ -67,6 +71,9 @@ namespace MyBatis.Common.Resources
         /// Initializes a new instance of the <see cref="AssemblyResource"/> class.
         /// </summary>
         /// <param name="uri">The URI.</param>
+        /// <remarks>
+        /// TODO: has issues see https://msdn.microsoft.com/en-us/library/ky3942xh%28v=vs.110%29.aspx 
+        /// </remarks>
         public AssemblyResource(Uri uri)
         {
             Contract.Require.That(uri, Is.Not.Null).When("retrieving uri argument in AssemblyResource constructor");
@@ -120,6 +127,7 @@ namespace MyBatis.Common.Resources
         /// If the resource is not available on a filesystem, or cannot be
         /// exposed as a <see cref="System.IO.FileInfo"/> handle.
         /// </exception>
+        /// TODO: Remove from parent or implement. 
         public override FileInfo FileInfo
         {
             get { throw new NotImplementedException("The method or operation is not implemented."); }

@@ -32,6 +32,9 @@ namespace MyBatis.Common.Logging
 	/// <summary>
 	/// A simple logging interface abstracting logging APIs. Inspired by log4net.
 	/// </summary>
+	/// <remarks>
+	/// TODO: Replace with log4net.
+	/// </remarks>
 	public interface ILog
 	{
 		/// <summary>

@@ -117,13 +117,13 @@ namespace MyBatis.Common.Test.Fixtures.Resources
             }
         }
 
-        [Test]
-        [ExpectedException(typeof(ResourceException))]
+        [Test]        
         public void Non_existing_resource_should_raise_ResourceException()
         {
             string file = "/Something/file1.txt";
 
-            CustomUriBuilder builder = new CustomUriBuilder(file, AppDomain.CurrentDomain.BaseDirectory);
+            Assert.Throws<ResourceException>(delegate { CustomUriBuilder builder = new CustomUriBuilder(file, AppDomain.CurrentDomain.BaseDirectory); });
+
         }
 
         [Test]

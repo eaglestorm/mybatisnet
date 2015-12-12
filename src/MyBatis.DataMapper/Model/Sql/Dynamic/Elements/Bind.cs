@@ -54,7 +54,7 @@ namespace MyBatis.DataMapper.Model.Sql.Dynamic.Elements
     ///     <iterate property="Rules.CustomFields" open="" close="" conjunction="">
     ///         <bind name="custom-field" property="[]." />
     ///         <iterate property="[].Comparisons" open="" close="" conjunction="">
-    ///             <isNotEmpty property="[].Contains"><![CDATA[AND CP.[$~{custom-field}.ColumnName$] LIKE '%' || #[].Contains# || '%']]></isNotEmpty>
+    ///             <isNotEmpty property="[].Contains"><![CDATA[AND CP.[$~{custom-field}.ColumnName$] LIKE '%' || #[].Contains# || '%']]>
     ///                 ...
     ///             </isNotEmpty>
     ///         </iterate>

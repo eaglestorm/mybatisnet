@@ -2,8 +2,8 @@
 <settings>
 	<!--   User application and configured property settings go here.-->
 	<!--   Example: <add key="settingName" value="settingValue"/> -->
-	<add key="userid" value="IBatisNet" />
-	<add key="password" value="test" />
-	<add key="database" value="iBatisNet" />
-	<add key="datasource" value="(local)\NetSDK" />
+	<add key="userid" value="MyBatis" />
+	<add key="password" value="MyBatis" />
+	<add key="database" value="MyBatisUnitTest" />
+	<add key="datasource" value="BLUELIGHTSTORM\SQLEXPRESS" />
 </settings>

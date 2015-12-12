@@ -63,50 +63,34 @@ namespace MyBatis.Common.Test.Fixtures.Resources
         /// Use incorrect format for an assembly resource.  Using
         /// comma delimited instead of '/'.
         /// </summary>
-        [Test]
-        [ExpectedException(typeof(UriFormatException))]
+        [Test]        
         public void Mal_formed_resource_name_should_raise_UriFormatException()
         {
             string uri = "assembly://" + assemblyName + "," + resPath + "/sample.txt";
-
-            using (IResource resource = loader.Create(new Uri(uri)))
-            {
-                Assert.IsNotNull(resource);
-
-            }
+            Assert.Throws<UriFormatException>(delegate { loader.Create(new Uri(uri)); });
         }
 
 
         /// <summary>
         /// Use the correct format but with an invalid assembly name.
         /// </summary>
-        [Test]
-        [ExpectedException(typeof(FileNotFoundException))]
+        [Test]        
         public void Invalid_assembly_name_should_raise_FileNotFoundException()
         {
             string uri = "assembly://Xyz.Invalid.Assembly/" + resPath + "/sample.txt";
 
-            using (IResource resource = loader.Create(new Uri(uri)))
-            {
-                Assert.IsNotNull(resource);
-
-            }
+            Assert.Throws<FileNotFoundException>(delegate { loader.Create(new Uri(uri)); });           
         }
 
         /// <summary>
         /// Use correct assembly name, but incorrect namespace and resource name.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(ResourceException))]
         public void Invalid_resource_name_should_raise_ResourceException()
         {
              string uri = "assembly://" + assemblyName + "/Xyz/InvalidResource.txt";
 
-             using (IResource resource = loader.Create(new Uri(uri)))
-             {
-                 Assert.IsNotNull(resource);
-                 Assert.IsNull(resource.Stream, "Stream should be null");
-             }
+            Assert.Throws<ResourceException>(delegate { loader.Create(new Uri(uri)); });             
         }
     }
 }

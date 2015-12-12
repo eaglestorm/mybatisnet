@@ -32,6 +32,9 @@ namespace MyBatis.Common.Resources
     /// Convenience base class for <see cref="IResource"/>
     /// implementations, pre-implementing typical behavior.
     /// </summary>
+    /// <remarks>
+    /// TODO: refactor 
+    /// </remarks>
     public abstract class AbstractResource : IResource
     {
         /// <summary>

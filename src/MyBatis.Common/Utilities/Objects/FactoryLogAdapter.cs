@@ -34,6 +34,10 @@ namespace MyBatis.Common.Utilities.Objects
     /// A wrapper arround an <see cref="IFactory"/> implementation which logs argument type and value
     /// when CreateInstance is called.
 	/// </summary>
+	/// <remarks>
+	/// TODO: should be able to replace this with AOP.
+	/// This removes a dependency.
+	/// </remarks>
 	public class FactoryLogAdapter : IFactory
 	{
 		private readonly IFactory _factory = null;

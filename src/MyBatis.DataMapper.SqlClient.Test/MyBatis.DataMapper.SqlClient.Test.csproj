@@ -56,9 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\External-Bin\Net\2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\External-Bin\Net\2.0\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.0.5813.39033, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net20\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NVelocity, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -176,26 +176,35 @@
     <Compile Include="Fixtures\Modules\ResultMapModuleTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Debug\SqlMap_StatementOnly.config" />
-    <None Include="bin\Debug\test.config" />
-    <EmbeddedResource Include="bin\Debug\SqlMap_Test_Configure.config" />
-    <EmbeddedResource Include="bin\Debug\SqlMap.config" />
-    <EmbeddedResource Include="bin\Debug\providers.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\MyBatis.Common\MyBatis.Common.csproj">
       <Project>{BBC8DA4A-EA88-41D9-8B93-929B8F3ADADE}</Project>
-      <Name>Apache.Ibatis.Common</Name>
+      <Name>MyBatis.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyBatis.DataMapper\MyBatis.DataMapper.csproj">
       <Project>{F3E45F39-3224-4EAD-B138-EB5CC0E32824}</Project>
-      <Name>Apache.Ibatis.DataMapper</Name>
+      <Name>MyBatis.DataMapper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Maps\Account.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="providers.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlMap.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlMap_StatementOnly.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlMap_Test_Configure.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="test.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="cool.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -259,10 +268,19 @@
     <Content Include="Scripts\ps_SelectAccountWithOutPutParam.sql" />
     <Content Include="Scripts\ps_SelectAllAccount.sql" />
     <None Include="App.config" />
-    <None Include="bin\Debug\SqlMap.config.json" />
-    <None Include="bin\Debug\SqlMap.event.config" />
-    <None Include="bin\Debug\SqlMap.velocity.config" />
+    <None Include="SqlMap.config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlMap.event.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SqlMap.velocity.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="DataBase.config" />
+    <None Include="packages.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Scripts\ps_SelectByIdList.sql" />
     <Content Include="Scripts\ps_SelectLineItem.sql" />
     <Content Include="Scripts\README-embed-param.txt" />
@@ -286,6 +304,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

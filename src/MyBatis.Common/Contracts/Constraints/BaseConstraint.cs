@@ -64,6 +64,7 @@ namespace MyBatis.Common.Contracts.Constraints
         /// </returns>
         public abstract bool IsSatisfiedBy(object obj, AppendErrorMessage appendErrorMessage);
 
+        /// <summary>
         /// Represents the And operator between two constraints
         /// </summary>
         /// <param name="left">The first constraint</param>

@@ -1,11 +1,16 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F38165C3-C811-4D43-9AF2-5D3966746626}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		Solution-Items\Apache.Ibatis.Common.Test.nunit = Solution-Items\Apache.Ibatis.Common.Test.nunit
+		build.ps1 = build.ps1
 		Solution-Items\CommonAssemblyInfo.cs = Solution-Items\CommonAssemblyInfo.cs
-		Solution-Items\iBATIS.build = Solution-Items\iBATIS.build
+		iBATIS.build = iBATIS.build
 		Solution-Items\providers.config = Solution-Items\providers.config
+		setup.ps1 = setup.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBatis.Common", "MyBatis.Common\MyBatis.Common.csproj", "{BBC8DA4A-EA88-41D9-8B93-929B8F3ADADE}"

@@ -11,6 +11,9 @@ namespace MyBatis.DataMapper.SqlClient.Test.Fixtures.Mapping
     /// <summary>
     /// Summary description for TransactionTest.
     /// </summary>
+    /// <remarks>
+    /// TODO: should auto setup in memory database.
+    /// </remarks>
     [TestFixture] 
     public class TransactionTest: BaseTest
     {
@@ -58,27 +61,33 @@ namespace MyBatis.DataMapper.SqlClient.Test.Fixtures.Mapping
         }
 
         [Test]
-        [ExpectedException(typeof(DataMapperException))]
+        //[ExpectedException(typeof(DataMapperException))]
         public void Commit_after_dispose_throws_exception()
         {
-            using (ISession session = sessionFactory.OpenSession())
+            Assert.Throws<DataMapperException>(delegate
             {
-                ITransaction transaction = session.BeginTransaction();
-                transaction.Dispose();
-                transaction.Commit();
-            }
+                using (ISession session = sessionFactory.OpenSession())
+                {
+                    ITransaction transaction = session.BeginTransaction();
+                    transaction.Dispose();
+                    transaction.Commit();
+                }
+            });
         }
 
         [Test]
-        [ExpectedException(typeof(DataMapperException))]
+        //[ExpectedException(typeof(DataMapperException))]
         public void Rollback_after_dispose_throws_exception()
         {
-            using (ISession session = sessionFactory.OpenSession())
+            Assert.Throws<DataMapperException>(delegate
             {
-                ITransaction transaction = session.BeginTransaction();
-                transaction.Dispose();
-                transaction.Rollback();
-            }
+                using (ISession session = sessionFactory.OpenSession())
+                {
+                    ITransaction transaction = session.BeginTransaction();
+                    transaction.Dispose();
+                    transaction.Rollback();
+                }
+            });
         }
 
         [Test]

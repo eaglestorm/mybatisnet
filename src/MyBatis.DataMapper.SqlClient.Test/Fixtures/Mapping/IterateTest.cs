@@ -131,7 +131,7 @@ namespace MyBatis.DataMapper.SqlClient.Test.Fixtures.Mapping
             Assert.AreEqual(3, list.Count);
         }
 
-        [Ignore]
+        [Ignore("Because currey")]
         public void IterateInConditional()
         {
             IList<int> parameters = new List<int>();

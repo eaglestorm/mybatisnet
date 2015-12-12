@@ -1,7 +1,9 @@
 ﻿using MyBatis.Common.Contracts;
 using MyBatis.Common.Contracts.Exceptions;
-using NUnit.Framework;
 using Is = MyBatis.Common.Contracts.Constraints.Is;
+using NUnit.Common;
+using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace MyBatis.Common.Test.Fixtures.Contracts
 {
@@ -9,18 +11,16 @@ namespace MyBatis.Common.Test.Fixtures.Contracts
     public class EnsureTest
     {
 
-        [Test]
-        [ExpectedException(typeof(PostConditionException), ExpectedMessage = "Boolean object should be equal to 'True' when checking false value")]
+        [Test]        
         public void Boolean_condition_should_raise_exception_on_when_false()
         {
-            Contract.Ensure.That(1 == 2).When("checking false value");
+            Assert.Throws<PostConditionException>(delegate { Contract.Ensure.That(1 == 2).When("checking false value"); });
         }
 
-        [Test]
-        [ExpectedException(typeof(PostConditionException), ExpectedMessage = "String object should be equal to 'titi' when checking string")]
+        [Test]       
         public void Should_raise_exception_when_and_constraints_not_verified()
         {
-            Contract.Ensure.That("toto", Is.EqualTo("titi") & Is.Empty).When("checking string");
+            Assert.Throws<PostConditionException>(delegate { Contract.Ensure.That("toto", Is.EqualTo("titi") & Is.Empty).When("checking string"); });
         }
 
     }

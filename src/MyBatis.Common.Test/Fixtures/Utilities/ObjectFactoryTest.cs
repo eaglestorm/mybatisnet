@@ -11,14 +11,13 @@ namespace MyBatis.Common.Test.Fixtures.Utilities
 	public class ObjectFactoryTest
 	{
 		[Test]
-        [ExpectedException(typeof(ProbeException))]
 		public void AbstractConstructor()
 		{
 			IObjectFactory objectFactory = new ObjectFactory(true);
 
 			IFactory factory = objectFactory.CreateFactory(typeof (Document), Type.EmptyTypes );
 
-            object obj = factory.CreateInstance(null);
+            Assert.Throws<ProbeException>(delegate { object obj = factory.CreateInstance(null); });
 		}
     	
 		[Test]
@@ -32,38 +31,33 @@ namespace MyBatis.Common.Test.Fixtures.Utilities
 		}
     	
 		[Test]
-		[ExpectedException(typeof(ProbeException))]
 		public void PrivateConstructor()
 		{
 			IObjectFactory objectFactory = new ObjectFactory(true);
 
 			IFactory factory = objectFactory.CreateFactory(typeof (Order), Type.EmptyTypes );
 
-			object obj = factory.CreateInstance(null);
+            Assert.Throws<ProbeException>(delegate { object obj = factory.CreateInstance(null); });
 		}
 
-        [Test]
-        [ExpectedException(typeof(ProbeException))]
+        [Test]        
         public void NoMatchConstructor()
         {
             IObjectFactory objectFactory = new ObjectFactory(true);
 
             IFactory factory = objectFactory.CreateFactory(typeof(ItemBis), Type.EmptyTypes);
 
-            object obj = factory.CreateInstance(null);
+            Assert.Throws<ProbeException>(delegate { object obj = factory.CreateInstance(null); });
         }
 
 		[Test]
-		[ExpectedException(typeof(ProbeException))]
 		public void ProtectedConstructor()
 		{
 			IObjectFactory objectFactory = new ObjectFactory(true);
 
 			IFactory factory = objectFactory.CreateFactory(typeof (Item), Type.EmptyTypes );
 
-			object obj = factory.CreateInstance(null);
-
-			Assert.IsTrue(obj is Item);
+		    Assert.Throws<ProbeException>(delegate { object obj = factory.CreateInstance(null); });
 		}
 
 		[Test]

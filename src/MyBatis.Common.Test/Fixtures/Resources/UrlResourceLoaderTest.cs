@@ -2,6 +2,7 @@
 using System.IO;
 using MyBatis.Common.Resources;
 using NUnit.Framework;
+using MyBatis.Common.Exceptions;
 
 namespace MyBatis.Common.Test.Fixtures.Resources
 {
@@ -40,8 +41,7 @@ namespace MyBatis.Common.Test.Fixtures.Resources
             Assert.IsTrue(loader.Accept(new Uri("ftp://ibatis.apache.org/")));
         }
 
-        [Test]
-        [ExpectedException(typeof(MyBatis.Common.Exceptions.ResourceException))]
+        [Test]        
         public void Url_should_raise_exception_FileNotFoundException_on_FileInfo_property()
         {
             string uri = "http://www.apache.org/";
@@ -52,8 +52,7 @@ namespace MyBatis.Common.Test.Fixtures.Resources
             {
                 Assert.IsNotNull(resource);
 
-                FileInfo file = resource.FileInfo;
-                file.GetType();
+                Assert.Throws<ResourceException>(delegate { var file = resource.FileInfo; });                
             }
         }
     }

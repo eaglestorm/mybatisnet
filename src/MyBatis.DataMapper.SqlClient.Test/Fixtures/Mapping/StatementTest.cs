@@ -1269,7 +1269,7 @@ namespace MyBatis.DataMapper.SqlClient.Test.Fixtures.Mapping
         [Test]
         [Category("JIRA")]
         [Description("JIRA113")]
-        [Ignore]
+        [Ignore("because waspcroft")]
         public void Cache_stats_should_only_be_calculated_on_CachingStatments()
         {
             IModelStore modelStore = ((IModelStoreAccessor)dataMapper).ModelStore;

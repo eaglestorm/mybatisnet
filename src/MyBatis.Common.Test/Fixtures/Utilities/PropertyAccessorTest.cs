@@ -169,7 +169,6 @@ namespace MyBatis.Common.Test.Fixtures.Utilities
         /// Test accessor on virtual property
         /// </summary>
         [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "Test virtual")]
         public void TestVirtualIMemberAccessor1()
         {
             IGetAccessor accessorGet = factoryGet.CreateGetAccessor(typeof(PropertySon), "Account");
@@ -179,14 +178,13 @@ namespace MyBatis.Common.Test.Fixtures.Utilities
             Account account = (Account)accessorGet.Get(son);
 
             Assert.IsTrue(account.Days == Days.Wed);
-            accessorSet.Set(son, new Account());
+            Assert.Throws<InvalidOperationException>(delegate { accessorSet.Set(son, new Account()); });
         }
 
         /// <summary>
         /// Test accessor on virtual property
         /// </summary>
-        [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "Test virtual")]
+        [Test]        
         public void TestVirtualIMemberAccessor2()
         {
             IGetAccessor accessorGet = factoryGet.CreateGetAccessor(typeof(PropertySon), "Int");
@@ -196,14 +194,13 @@ namespace MyBatis.Common.Test.Fixtures.Utilities
             Int32 i = (Int32)accessorGet.Get(son);
 
             Assert.IsTrue(i == -88);
-            accessorSet.Set(son, 9);
+            Assert.Throws<InvalidOperationException>(delegate { accessorSet.Set(son, 9); });
         }
 
         /// <summary>
         /// Test IMemberAccessor on virtual property
         /// </summary>
         [Test]
-        [ExpectedException(typeof(InvalidOperationException), ExpectedMessage = "Test virtual")]
         public void TestVirtualIMemberAccessor3()
         {
             IGetAccessor accessorGet = factoryGet.CreateGetAccessor(typeof(PropertySon), "DateTime");
@@ -213,7 +210,7 @@ namespace MyBatis.Common.Test.Fixtures.Utilities
             DateTime date = (DateTime)accessorGet.Get(son);
 
             Assert.AreEqual(new DateTime(2000,1,1), date);
-            accessorSet.Set(son, DateTime.Now);
+            Assert.Throws<InvalidOperationException>(delegate { accessorSet.Set(son, DateTime.Now); });
         }
 
         /// <summary>
